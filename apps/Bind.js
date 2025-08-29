@@ -75,7 +75,7 @@ export class Bind extends plugin {
             }
             const id = Math.random().toString(36).substring(2, 12);
             Server.data[id] = { user_id: e.user_id };
-            await e.reply(`请复制登录地址到浏览器打开：\n${Config.getConfig().public_link}/login/${id}\n您的识别码为【${e.user_id}】\n登录地址10分钟内有效`);
+            await e.reply(`请复制登录地址到浏览器打开：\n${Config.getConfig().public_link}/login/${id}\n您的识别码为【${e.user_id}】\n登录地址10分钟内有效\n 2分钟后撤回本条消息`, true, { recallMsg: 120 });
 
             const timeout = Date.now() + 10 * 60 * 1000;
             while (!Server.data[id].token && Date.now() < timeout) {
